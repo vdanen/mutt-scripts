@@ -1,0 +1,84 @@
+# -*- muttrc -*-
+#
+# Fine tune mutt depending on which folder I'm viewing.
+#
+# $Id: folder-hooks 17 2007-03-11 04:17:12Z vdanen $
+
+# this is always our primary/default email address
+folder-hook . "send-hook . 			'my_hdr From: Vincent Danen <vdanen@linsec.ca>'"
+
+# send mails to these address(es) using our specific address
+folder-hook . "send-hook '~t annvix.org'	'my_hdr From: Vincent Danen <vdanen@annvix.org>'"
+folder-hook . "send-hook '~t mandriva.com'	'my_hdr From: Vincent Danen <vdanen@mandriva.com>'"
+folder-hook . "send-hook '~t mandrivalinux.org' 'my_hdr From: Vincent Danen <vdanen@mandriva.com>'"
+
+# send hooks for sending mail out per mailbox; this way you can be in a
+# mailbox and you'll send mail out with the address you would normally use
+# in that mailbox
+#
+### prefixed mailboxes
+#
+folder-hook =mdv			"send-hook . 'my_hdr From: Vincent Danen <vdanen@mandriva.com>'"
+folder-hook =avx			"send-hook . 'my_hdr From: Vincent Danen <vdanen@annvix.org>'"
+folder-hook =owl			"send-hook . 'my_hdr From: Vincent Danen <vdanen@linsec.ca>'"
+#
+### inboxes
+#
+folder-hook =Inbox			"send-hook . 'my_hdr From: Vincent Danen <vdanen@linsec.ca>'"
+folder-hook =Inbox-annvix		"send-hook . 'my_hdr From: Vincent Danen <vdanen@annvix.org>'"
+folder-hook =Inbox-mandriva		"send-hook . 'my_hdr From: Vincent Danen <vdanen@mandriva.com>'"
+#
+### mailing list mailboxes that don't use our default email address
+#
+folder-hook =apparmor			"send-hook . 'my_hdr From: Vincent Danen <vdanen@annvix.org>'"
+folder-hook =rsbac			"send-hook . 'my_hdr From: Vincent Danen <vdanen@annvix.org>'"
+folder-hook =apt-rpm			"send-hook . 'my_hdr From: Vincent Danen <vdanen@annvix.org>'"
+
+folder-hook .                  		source ~/.mutt/defaults
+folder-hook "!$"               		source ~/.mutt/defaults
+folder-hook =Inbox             		source ~/.mutt/defaults
+folder-hook =Inbox-annvix		source ~/.mutt/defaults
+folder-hook =Inbox-mandriva		source ~/.mutt/defaults
+folder-hook =avx-announce		source ~/.mutt/defaults.maillist
+folder-hook =avx-cvs			source ~/.mutt/defaults.maillist
+folder-hook =avx-dev			source ~/.mutt/defaults.maillist
+folder-hook =avx-users			source ~/.mutt/defaults.maillist
+folder-hook =avx-ports			source ~/.mutt/defaults.maillist
+folder-hook =mdv-all			source ~/.mutt/defaults.maillist
+folder-hook =mdv-security-announce	source ~/.mutt/defaults.maillist
+folder-hook =mdv-changelog		source ~/.mutt/defaults.maillist
+folder-hook =mdv-cooker			source ~/.mutt/defaults.maillist
+folder-hook =mdv-security-discuss	source ~/.mutt/defaults.maillist
+folder-hook =mdv-expert			source ~/.mutt/defaults.maillist
+folder-hook =mdv-kernel			source ~/.mutt/defaults.maillist
+folder-hook =mdv-maintainers		source ~/.mutt/defaults.maillist
+folder-hook =mdv-webtrans		source ~/.mutt/defaults.maillist
+folder-hook =owl-announce		source ~/.mutt/defaults.maillist
+folder-hook =owl-devel			source ~/.mutt/defaults.maillist
+folder-hook =owl-cvs			source ~/.mutt/defaults.maillist
+folder-hook =owl-users			source ~/.mutt/defaults.maillist
+folder-hook =fulldisclosure		source ~/.mutt/defaults.maillist
+folder-hook =apparmor			source ~/.mutt/defaults.maillist
+folder-hook =bugtraq			source ~/.mutt/defaults.maillist
+folder-hook =exim			source ~/.mutt/defaults.maillist
+folder-hook =mac_ministry		source ~/.mutt/defaults.maillist
+folder-hook =openssh			source ~/.mutt/defaults.maillist
+folder-hook =websecurity		source ~/.mutt/defaults.maillist
+folder-hook =daylite			source ~/.mutt/defaults.maillist
+folder-hook =supervision		source ~/.mutt/defaults.maillist
+folder-hook =rsbac			source ~/.mutt/defaults.maillist
+folder-hook =apt-rpm			source ~/.mutt/defaults.maillist
+folder-hook =komodo-beta		source ~/.mutt/defaults.maillist
+folder-hook =elug			source ~/.mutt/defaults.maillist
+folder-hook =emacx			source ~/.mutt/defaults.maillist
+folder-hook =advisories			source ~/.mutt/defaults.maillist
+folder-hook =vendorsec			source ~/.mutt/defaults.maillist
+folder-hook =Spam			source ~/.mutt/defaults.maillist
+folder-hook =kernel			source ~/.mutt/defaults.maillist
+
+# =mbox and =Sentmail are symlinks to =history.
+folder-hook =mbox	push # "<limit>!~f\\\"vdanen@(linsec.ca|annvix.org|mandriva.com|gmail.com)\\\"<enter><last-entry>"
+folder-hook =mbox	source ~/.mutt/defaults
+folder-hook sent-mail	push "<limit>~f\\\"vdanen@(linsec.ca|annvix.org|mandriva.com|gmail.com)\\\"<enter><last-entry>"
+folder-hook sent-mail 'set simple_search="~t %s | ~s %s"'
+folder-hook sent-mail	source ~/.mutt/defaults

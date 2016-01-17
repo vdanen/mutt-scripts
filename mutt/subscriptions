@@ -1,0 +1,28 @@
+# -*- muttrc -*-
+#
+# List of mailing lists I'm subscribed to.
+#
+# $Id: subscriptions 16 2007-03-09 19:52:41Z vdanen $
+
+#
+# Annvix
+#
+subscribe announce
+subscribe cvs
+subscribe dev
+subscribe users
+subscribe ports
+#
+# Mandriva
+#
+subscribe security-announce
+subscribe changelog
+subscribe cooker
+subscribe expert
+subscribe security-discuss
+subscribe maintainers
+subscribe kernel
+subscribe webtrans
+#
+# All the rest
+#

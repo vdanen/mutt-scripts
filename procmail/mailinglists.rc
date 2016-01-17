@@ -1,0 +1,238 @@
+# $Id: mailinglists.rc 21 2007-03-11 04:41:38Z vdanen $
+
+#
+# [-- Annvix --]
+#
+# announce
+:0:
+* ^Return-Path:.*announce-bounces@annvix.org
+$MAIL/avx-announce
+#
+# cvs
+:0:
+* ^Return-Path:.*cvs-bounces@annvix.org
+$MAIL/avx-cvs
+#
+# dev
+:0:
+* ^Return-Path:.*dev-bounces@annvix.org
+$MAIL/avx-dev
+#
+# users
+:0:
+* ^Return-Path:.*users-bounces@annvix.org
+$MAIL/avx-users
+#
+# ports
+:0:
+* ^Return-Path:.*ports-bounces@annvix.org
+$MAIL/avx-ports
+#
+# [-- Mandriva --]
+#
+# changelog
+# first we delete all crap commits we don't care about
+:0:
+* ^Subject:.*[cooker-commits].*packages.*releases.*
+/dev/null
+:0:
+* ^Return-Path:.*changelog-owner@mandrivalinux.org
+$MAIL/mdv-changelog
+:0:
+* ^Return-Path:.*cooker-commits-owner@mandrivalinux.org
+$MAIL/mdv-changelog
+#
+# cooker
+:0:
+* ^Return-Path:.*cooker-owner@mandrivalinux.org
+$MAIL/mdv-cooker
+#
+# expert
+:0:
+* ^Return-Path:.*expert-owner@mandrivalinux.org
+$MAIL/mdv-expert
+#
+# maintainers
+# first we delete all the REJECTED messages
+:0:
+* ^Subject:.*[Maintainers] REJECTED.*
+/dev/null
+#:0:
+#* ^Subject:.*[Maintainers] [MISSING].*
+#$MAIL/2delete
+:0:
+* ^Return-Path:.*maintainers-owner@mandriva.com
+$MAIL/mdv-maintainers
+#
+# security-announce
+:0:
+* ^Return-Path:.*security-announce-owner@mandrivalinux.org
+$MAIL/mdv-security-announce
+#
+# security-discuss
+# but first get rid of moderator requests
+:0:
+* ^Return-Path:.*security-discuss-owner@mandrivalinux.org
+* ^Subject:.*Article to be approved for security-discuss$
+$MAIL/2delete
+:0:
+* ^Return-Path:.*security-discuss-owner@mandrivalinux.org
+$MAIL/mdv-security-discuss
+#
+# webtrans
+:0:
+* ^Return-Path:.*webtrans-owner@mandrivalinux.org
+$MAIL/mdv-webtrans
+#
+# kernel
+:0:
+* ^Return-Path:.*kernel-owner@mandriva.com
+$MAIL/mdv-kernel
+#
+# all
+:0:
+* ^Return-Path:.*all-owner@mandriva.com
+$MAIL/mdv-all
+#
+# engineering
+:0:
+* ^Return-Path:.*engineering-owner@mandriva.com
+$MAIL/mdv-all
+#
+# company
+:0:
+* ^Return-Path:.*company-owner@mandriva.com
+$MAIL/mdv-all
+#
+# allusers@
+:0:
+* ^Delivered-To:.*allusers@mandriva.com
+$MAIL/mdv-all
+
+#
+# [-- Openwall --]
+#
+# owl-devel
+:0:
+* ^Return-Path:.*owl-devel-return.*vdanen=linsec.ca@lists.openwall.com
+$MAIL/owl-devel
+#
+# owl-cvs
+:0:
+* ^Return-Path:.*owl-cvs-return.*vdanen=linsec.ca@lists.openwall.com
+$MAIL/owl-cvs
+#
+# owl-users
+:0:
+* ^Return-Path:.*owl-users-return.*vdanen=linsec.ca@lists.openwall.com
+$MAIL/owl-users
+#
+# announce
+:0:
+* ^Return-Path:.*announce-return.*vdanen=linsec.ca@lists.openwall.com
+$MAIL/owl-announce
+
+
+#
+#
+# [-- Other Mailing Lists --]
+#
+# full-disclosure@lists.grok.org.uk
+:0:
+* ^Return-Path:.*full-disclosure-bounces@lists.grok.org.uk
+$MAIL/fulldisclosure
+#
+# bugtraq@securityfocus.com
+:0:
+* ^Return-Path:.*bugtraq-return.*vdanen=linsec.ca@securityfocus.com
+$MAIL/bugtraq
+#
+# exim-users@exim.org
+:0:
+* ^Return-Path:.*exim-users-bounces.*linsec.ca@exim.org
+$MAIL/exim
+#
+# Mac-Ministry@list
+:0:
+* ^Return-Path.*Mac-Ministry@list.macministry.org
+$MAIL/mac_ministry
+#
+# openssh-unix-dev@mindrot.org
+:0:
+* ^Return-Path:.*openssh-unix-dev-bounce.*vdanen=linsec.ca@mindrot.org
+$MAIL/openssh
+#
+# websecurity@webappsec.org
+:0:
+* ^Return-Path:.*websecurity-return.*vdanen=linsec.ca@webappsec.org
+$MAIL/websecurity
+#
+# daylite*@marketcircle.com
+:0:
+* ^Return-Path:.*daylite.*-bounces@marketcircle.com
+$MAIL/daylite
+#
+# komodo-beta@listserv.ActiveState.com
+:0:
+* ^Return-Path:.*komodo-beta-bounces@listserv.ActiveState.com
+$MAIL/komodo-beta
+#
+# {elug,osus}@linux.ab.ca
+:0:
+* ^Return-Path:.*osus-return.*linux.ab.ca
+$MAIL/elug
+:0:
+* ^Return-Path:.*elug-return.*linux.ab.ca
+$MAIL/elug
+#
+# secteam@linsec.ca
+:0:
+* ^_TO:.*secteam@linsec.ca
+$MAIL/secteam
+#
+# emacx@linsec.ca
+:0:
+* ^Return-Path:.*emacx-bounces@linsec.ca
+$MAIL/emacx
+#
+# apparmor-dev@forge.novell.com
+:0:
+* ^Return-Path:.*apparmor-dev-bounces@forge.novell.com
+$MAIL/apparmor
+#
+# misc@list.smarden.org
+:0:
+* ^Return-Path:.*misc-return.*list.smarden.org
+$MAIL/supervision
+#
+# supervision@list.skarnet.org
+:0:
+* ^Return-Path:.*supervision-return.*list.skarnet.org
+$MAIL/supervision
+#
+# rsbac@rsbac.org
+:0:
+* ^Return-Path:.*rsbac-bounces@rsbac.org
+$MAIL/rsbac
+#
+# apt-rpm@lists.laiskiainen.org
+:0:
+* ^Return-Path:.*apt-rpm-bounces@lists.laiskiainen.org
+$MAIL/apt-rpm
+#
+# [-- Security Announcement Lists --]
+#
+# debian-security-announce@lists.debian.org
+:0:
+* ^Return-Path:.*bounce-debian-security-announce.*lists.debian.org
+$MAIL/advisories
+#
+# suse-security-announce@suse.com
+:0:
+* ^Return-Path:.*suse-security-announce-return.*suse.com
+$MAIL/advisories
+#
+# redhat-watch-list@redhat.com
+:0:
+* ^Return-Path:.*redhat-watch-list-admin@redhat.com
+$MAIL/advisories

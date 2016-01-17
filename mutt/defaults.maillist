@@ -1,0 +1,8 @@
+# -*- muttrc -*-
+#
+# $Id: defaults.maillist 17 2007-03-11 04:17:12Z vdanen $
+#
+# defaults for generic mailing lists
+
+source ~/.mutt/defaults			# source the defaults
+set sort=threads			# sort by thread

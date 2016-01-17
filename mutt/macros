@@ -1,0 +1,61 @@
+# -*- muttrc -*-
+#
+# macros for mutt.
+#
+# $Id: macros 9 2007-03-02 21:19:58Z vdanen $
+
+# Macros for use in the index.
+macro index "\Cx\Cb" "<change-folder>?"                                   # Folder list.
+macro index "\Cx\Cs" "<pipe-message>cat > ~/"                             # Save message
+macro index "\'"     "<clear-flag>r"                                      # Mark as un-replied
+macro index "y"      "<sync-mailbox><change-folder>?<toggle-mailboxes>"   # "-y" screen
+macro index "\Cb"    "<pipe-message>urlview<enter>"                       # URL viewer.
+macro index "\ea"    "<change-folder>=archives/<tab><tab>"                # List archives
+macro index "\eb"    "<pipe-message>lbdb-fetchaddr<enter>"                # Store address details in lbdb.
+macro index "\eh"    "<pipe-message>mailhops<enter>"                      # View the path of the mail.
+macro index "\ef"    "<pipe-message>view-x-face<enter>"                   # View the X-Face (if there is one).
+macro index "\ev"    "<pipe-message>less<enter>"                          # View the message in less.
+macro index "\Cs\Co" "<limit>~h \"X-SpamProbe: GOOD\"<enter><last-entry>" # View good emails.
+macro index "\Cs\Cs" "<limit>~h \"X-SpamProbe: SPAM\"<enter><last-entry>" # View bad emails.
+macro index "q"	     "<change-folder>?<toggle-mailboxes>"		  # when hit quit in index, change folder and toggle to mbox view
+
+
+# Macros for use in the pager.
+macro pager "w"      "<enter-command>set invsmart_wrap invmarkers<enter>" # Toggle wrap stuff
+macro pager "y"      "<sync-mailbox><change-folder>?<toggle-mailboxes>"   # "-y" screen
+macro pager "\e1"    "<enter-command>set pager_index_lines=1<enter>"      # Change PIL size
+macro pager "\e2"    "<enter-command>set pager_index_lines=2<enter>"      # Change PIL size
+macro pager "\e3"    "<enter-command>set pager_index_lines=3<enter>"      # Change PIL size
+macro pager "\e4"    "<enter-command>set pager_index_lines=4<enter>"      # Change PIL size
+macro pager "\e5"    "<enter-command>set pager_index_lines=5<enter>"      # Change PIL size
+macro pager "\e6"    "<enter-command>set pager_index_lines=6<enter>"      # Change PIL size
+macro pager "\e7"    "<enter-command>set pager_index_lines=7<enter>"      # Change PIL size
+macro pager "\e8"    "<enter-command>set pager_index_lines=8<enter>"      # Change PIL size
+macro pager "\e9"    "<enter-command>set pager_index_lines=9<enter>"      # Change PIL size
+macro pager "\e0"    "<enter-command>set pager_index_lines=0<enter>"      # Change PIL size
+macro pager "\Cb"    "<pipe-message>urlview<enter>"                       # URL viewer.
+macro pager "\Cx\Cb" "<change-folder>?"                                   # Folder list.
+macro pager "\Cx\Cs" "<pipe-message>cat > ~/"                             # Save message
+macro pager "\eb"    "<pipe-message>lbdb-fetchaddr<enter>"                # Store address details in lbdb.
+macro pager "\eh"    "<pipe-message>mailhops<enter>"                      # View the path of the mail.
+macro pager "\ef"    "<pipe-message>view-x-face<enter>"                   # View the X-Face (if there is one).
+macro pager "\ev"    "<pipe-message>less<enter>"                          # View the message in less.
+macro pager "\el"    "<enter-command>set invpipe_decode<enter>\
+<pipe-message>linkify|w3m -T text/html<enter><enter-command>\
+set invpipe_decode<enter>"                                                # View the message in w3m.
+macro pager "\Cs\Cs" "<pipe-message>spamprobe -T score<enter>"            # What's the score for this message?
+macro pager "\Cs\Cj" "<pipe-message>spamprobe spam<enter>"                # This message is junk.
+macro pager "\Cs\Cg" "<pipe-message>spamprobe good<enter>"                # This message is good.
+
+# Provide some "on-line" help.
+macro generic "\e?" "<shell-escape>less /usr/local/doc/mutt/manual.txt<enter>"
+macro index   "\e?" "<shell-escape>less /usr/local/doc/mutt/manual.txt<enter>"
+macro pager   "\e?" "<shell-escape>less /usr/local/doc/mutt/manual.txt<enter>"
+
+# spamassassin
+macro pager	"B"	"<pipe-message>sa-learn --spam >/dev/null&<enter><save-message>=Spam<enter>"
+macro index	"B"	"<pipe-message>sa-learn --spam >/dev/null&<enter><save-message>=Spam<enter>"
+macro pager	"G"	"<pipe-message>sa-learn --ham >/dev/null </dev/null &<enter><save-message>=Inbox<enter>"
+macro index	"G"	"<pipe-message>sa-learn --ham >/dev/null </dev/null &<enter><save-message>=Inbox<enter>"
+
+macro browser	"q"	"<exit><quit>"						# allow us to quit in the browser

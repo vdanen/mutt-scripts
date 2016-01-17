@@ -1,0 +1,58 @@
+# -*- muttrc -*-
+#
+# List of folders that are considered to be "mailboxes" (folders that
+# receive incoming mail).
+#
+# $Id: mailboxes 17 2007-03-11 04:17:12Z vdanen $
+
+#mailboxes ! 
+mailboxes =Inbox
+mailboxes =Inbox-annvix
+mailboxes =Inbox-mandriva
+mailboxes =sysmsgs
+
+mailboxes =avx-announce
+mailboxes =avx-cvs
+mailboxes =avx-dev
+mailboxes =avx-users
+mailboxes =avx-ports
+
+mailboxes =mdv-all
+mailboxes =mdv-security-announce
+mailboxes =mdv-security-discuss
+mailboxes =mdv-cooker
+mailboxes =mdv-expert
+mailboxes =mdv-maintainers
+mailboxes =mdv-webtrans
+mailboxes =mdv-kernel
+mailboxes =mdv-changelog
+
+mailboxes =owl-announce
+mailboxes =owl-users
+mailboxes =owl-devel
+mailboxes =owl-cvs
+
+mailboxes =advisories
+mailboxes =bugtraq
+mailboxes =fulldisclosure
+mailboxes =vendorsec
+mailboxes =mac_ministry
+mailboxes =emacx
+mailboxes =apparmor
+mailboxes =daylite
+mailboxes =exim
+mailboxes =komodo_beta
+mailboxes =supervision
+mailboxes =rsbac
+mailboxes =apt-rpm
+mailboxes =openssh
+mailboxes =websecurity
+mailboxes =securesoftware
+mailboxes =Spam
+mailboxes =2delete
+mailboxes =Saved/annvix
+mailboxes =Saved/confirmations
+mailboxes =Saved/mandriva
+mailboxes =Saved/personal
+mailboxes =Saved/receipts
+mailboxes =Saved/techinfo

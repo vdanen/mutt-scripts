@@ -1,0 +1,188 @@
+# .procmailrc
+#
+# $Id: procmail.rc 21 2007-03-11 04:41:38Z vdanen $
+
+DATE=`date +%Y-%m`
+SHELL=/bin/sh
+VERBOSE=off
+PMDIR=/Users/vdanen/.procmail
+LOGFILE=$PMDIR/procmail.log
+# inserts a blank line between log entries
+LOG="
+"
+MAIL=/Users/vdanen/Mail
+MLIST=$MAIL
+
+#
+# delete duplicate messages first
+#
+:0 Wh: msgid.lock
+| formail -D 8192 $PMDIR/msgid.cache
+
+#
+# keep our archive in dated mboxes
+#
+:0 c
+$MAIL/Archives/incoming-$DATE
+
+#
+# delete stuff the server marks as spam outright
+#
+:0
+* ^Subject:.*\[--SPAM--\]
+/dev/null
+#
+# delete message delivery errors
+:0
+* ^Subject:.*Undelivered Mail Returned to Sender$
+/dev/null
+#
+:0
+* ^Subject:.*DELIVERY FAILURE: User.*not listed.*
+/dev/null
+#
+:0
+* ^Subject:.*Delayed Mail \(still being retried\)$
+/dev/null
+#
+:0
+* ^Subject:.*Delivery Status Notification \((Failure|Delayed)\)$
+/dev/null
+#
+:0
+* ^Subject:.*Delivery Status Notification$
+* ^TO_.*security@mandriva.com
+/dev/null
+#
+:0
+* ^Subject:.*Returned mail: User unknown$
+/dev/null
+#
+:0
+* ^Subject:.*Mail System Error - Returned Mail$
+/dev/null
+#
+:0
+* ^Subject:.*Mail delivery failed: returning message to sender
+/dev/null
+:0
+* ^Subject:.*Undeliverable:.*Security Announce.*
+/dev/null
+#
+:0
+* ^Subject:.*Returned mail: see the transcript
+/dev/null
+#
+:0
+* ^Subject:.*Returned Mail:.*Security Announce
+/dev/null
+:0
+* ^Subject:.*ALERT.*Virus.*message has been quarantined
+/dev/null
+#
+:0
+* ^Subject:.*DELIVERY FAILURE:
+/dev/null
+#
+:0
+* ^Subject.*User does not exist
+/dev/null
+#
+:0
+* ^Subject:.*failure notice
+/dev/null
+#
+:0
+* ^Subject:.*Google Groups: No such group
+/dev/null
+:0
+* ^Subject:.*Undeliverable mail
+/dev/null
+:0
+* ^Subject:.*Mail could not be delivered
+/dev/null
+:0
+* ^Subject:.*No Subject
+/dev/null
+:0
+* ^Subject:.*Returned mail: Cannot send message
+/dev/null
+:0
+* ^Subject:.*ALERT - Virus  found;
+/dev/null
+:0
+* ^From:.*AntiSpam UOL
+/dev/null
+:0
+* ^Subject:.*Avis Important et Personnel
+/dev/null
+:0
+* ^From:.*donotreply@enterto.com
+/dev/null
+#
+# don't want to see any postmaster messages from mandrax.org
+#
+:0
+* ^From:.*postmaster@mandrax.org
+/dev/null
+#
+#
+# delete MAILER-DAEMON messages to any -owner*mandrivalinux.org messages or
+# to security@mandrivalinux.org
+#
+:0
+* ^FROM_MAILER
+* ^TO_.*security.*@mandrivalinux.org
+/dev/null
+#
+:0
+* ^FROM_MAILER
+* ^TO_.*security@mandriva.com
+/dev/null
+
+#
+# mailing lists
+#
+INCLUDERC=$PMDIR/mailinglists.rc
+
+
+#
+# [--SPAM--] check messages with spamassassin
+#
+INCLUDERC=$PMDIR/spam.rc
+
+
+#
+# vendor-sec *should* be in the mailinglists.rc but because it gets so much spam we'll move
+# it to after the spam catch
+#
+:0:
+* ^Return-Path:.*vendor-sec-admin@lst.de
+$MAIL/vendorsec
+
+#
+# same with security-discuss
+:0:
+* ^Return-Path:.*security-discuss-owner@mandrivalinux.(org|com)
+$MAIL/security-discuss
+
+
+# system messages and logs, etc.
+:0:
+* ^From:.*(root|cron).*(annvix.ca|annvix.org|mandriva.com|danen.ca)
+$MAIL/sysmsgs
+
+#
+#
+# final delivery to inbox
+:0:
+* ^TO_.*vdanen@annvix.org
+$MAIL/Inbox-annvix
+:0:
+* ^TO_.*(vdanen|security)@mandriva.com
+$MAIL/Inbox-mandriva
+:0:
+* ^TO_.*editor@mandrivalinux.org
+$MAIL/Inbox-mandriva
+:0
+$MAIL/Inbox

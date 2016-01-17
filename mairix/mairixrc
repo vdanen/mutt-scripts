@@ -1,0 +1,18 @@
+# mairix configuration file
+#
+# $Id: mairixrc 30 2007-04-08 15:41:53Z vdanen $
+
+# the base where our mail is stored, and where we put the mairix database
+base=~/Mail
+database=~/.mairix/database
+
+# this needs to be a full path for our msearch script (which deletes the
+# mbox if it exists to replace it with new search results)
+mformat=mbox
+mfolder=/Users/vdanen/Mail/mairix-search
+
+# index everything in $base, recursively
+mbox=*...
+
+# don't index our spam folders
+omit=2delete:Spam:Archives/*

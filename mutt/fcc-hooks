@@ -1,0 +1,23 @@
+# -*- muttrc -*-
+#
+# Fcc hooks, everything else goes to =Sentmail
+#
+# $Id: fcc-hooks 11 2007-03-03 05:13:08Z vdanen $
+
+fcc-hook garble-.*@.*\.sourceforge\.net                          /dev/null
+fcc-hook lbc@.*linuxemporium\.co\.uk                             /dev/null
+fcc-hook librep-list@.*\.sourceforge\.net                        /dev/null
+fcc-hook mutt-users@(.*cs\.hmc\.edu|mutt\.org|gbnet\.net)        /dev/null
+fcc-hook (peterboro|lincs)@mailman\.lug\.org\.uk                 /dev/null
+fcc-hook stormcock@(steamradio\.com|mistlethrush\.co\.uk)        /dev/null
+fcc-hook (clocc|cclan)-list@lists\.sourceforge\.net              /dev/null
+fcc-hook debian-.*@lists\.debian\.org                            /dev/null
+fcc-hook spamprobe-users@lists\.sourceforge\.net                 /dev/null
+fcc-hook ecls-list@lists\.sourceforge\.net                       /dev/null
+fcc-hook uk-lispers@cathouse\.bofh\.se                           /dev/null
+fcc-hook dict-beta@dict\.org                                     /dev/null
+fcc-hook movitz-devel@common-lisp\.net                           /dev/null
+fcc-hook sbcl-help@lists\.sourceforge\.net                       /dev/null
+fcc-hook lispweb@red-bean\.com                                   /dev/null
+# save everything to a dated archive mailbox
+fcc-hook .*							=Archives/sent-mail-`date +%Y-%m`

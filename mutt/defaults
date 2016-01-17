@@ -1,0 +1,45 @@
+# -*- muttrc -*-
+#
+# $Id: defaults 19 2007-03-11 04:40:38Z vdanen $
+
+bind index @ noop		# null out any folder specific keys
+set signature=~/.mutt/signature	# set the default signature
+set pager_index_lines=15	# start off with index footer in pager
+
+# Reset any headers that may have been set in other folder-hooks
+unmy_hdr From:
+unmy_hdr Reply-To:
+unmy_hdr Fcc:
+unmy_hdr Return-Receipt-To:
+unmy_hdr X-URL:
+
+# Now set the headers.
+my_hdr From: Vincent Danen <vdanen@linsec.ca>
+my_hdr X-URL: http://linsec.ca/
+my_hdr X-Mailer: Mutt 1.5.x/OS X 10.4.x
+my_hdr X-PGP-Key: http://linsec.ca/vdanen.asc
+my_hdr X-PGP-Key-ID: 0xFEE30AD4
+my_hdr X-PGP-Key-Fingerprint: 7F6C A60C 06C2 4811 FA1C  A2BC 2EBC 5E32 FEE3 0AD4
+
+reset abort_nosubject			# by default use the default value for abort_nosubject
+set pgp_verify_sig			# always verify signatures by default
+
+# This is the index format for non-list folders.
+set index_format="%4C %Z %{%b %d %H:%M:%S} %-20.20L [%5c] %s"
+
+# display formats
+set alias_format="%2n %t %-20.20a: %r"
+set attach_format="%2n %D%I%u%t %T%f %d (%s) (%m/%M, %e, %C)"
+set compose_format="Compose %h [Approx. msg size: %l, Atts: %a] %v %>-"
+set date_format="!%a %e.%h'%y at %k:%M:%S %Z"
+#set folder_format="%N %3C %d %2l (%5s) %f"
+set folder_format="[%N] %d (%10s) %f"
+set message_format="From: <%a>, Sub: %s"
+
+#set index_format="%Z %2C %.13d (%-$FCOL.${FCOL}F) %-$SCOL.${SCOL}s (%c/%l"
+set pager_format="%Z %C/%m %d (%F) %s (%c/%l) %|-"
+set pgp_entry_format="%3n %t%f %4l/0x%k %-4a %2c %u %[%a %e.%h'%y at %k:%M:%S %Z]"
+
+set status_format="_%r_ %h: %f, %l/%m (%P,%s) [ %?p?PP:%p ?%?t?Tag:%t ?%?d?DEL:%d ?]%?V?, %L/%M only=%V? < %?F?go:%F ?%?n?new:%n ?> %v"
+
+

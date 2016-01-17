@@ -1,0 +1,43 @@
+# $Id: spam.rc 4 2007-02-28 22:58:25Z vdanen $
+#
+# if the score is between 5.00 and 15.00, put it in the spam folder
+# first-run is from messages already processed upstream so we don't have to do it again
+:0
+* ^X-Spam-Status: Yes
+#* ^X-Spam-Level: *****
+$MAIL/Spam
+#
+:0
+* ^X-Spam-Flag:.*YES
+$MAIL/Spam
+#
+# don't run SA on messages larger than ~250kb
+:0 fh w
+* > 256000
+* ^Subject:\/.*
+| formail -I "Subject: {* -BIG- *} $MATCH"
+#
+# (E)lse if the message is smaller than ~250kb, pipe it through SA.  The
+# explicit lock file here ensures that SA is only invoked once at a time
+# to avoid CPU hogging; only use if *not* using spamd/spamc
+##:0 E f w: spamassassin.lock
+##| /sw/bin/spamassassin -a
+#
+# (E)lse if the message is smaller than ~250kb and you're using spamc,
+# uncomment this recipe instead; make sure no lockfile is used
+#:0 E fw
+#| /usr/bin/spamc
+#
+# If the spam score is higer than 10.00, delete it outright
+#
+:0
+* ^X-Spam-SpamScore: 1[0-9].[0-9]
+## /dev/null
+# temporarily deliver to 2delete so we don't miss anything
+$MAIL/2delete
+#
+# if the score is between 5.00 and 15.00, put it in the spam folder
+:0
+* ^X-Spam-Status: Yes
+#* ^X-Spam-Level: *****
+$MAIL/Spam

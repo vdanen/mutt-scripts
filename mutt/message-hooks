@@ -1,0 +1,16 @@
+# -*- muttrc -*-
+#
+# Fine-tune mutt depending on aspects of a message.
+#
+# $Id: message-hooks 9 2007-03-02 21:19:58Z vdanen $
+
+# By default, don't do anything clever.
+message-hook . "unset display_filter"
+
+# Sort out silly characters from Microsoft MUAs or MUAs that suffer the same
+# problems.
+message-hook "~h \"X-Mailer: (Microsoft Outlook IMO|Experian ContactMail)\"" "set display_filter='tr \\\\200\\\\202\\\\221\\\\222\\\\223\\\\224\\\\225\\\\226\\\\227 \\\\244\\\\054\\\\140\\\\047\\\\042\\\\042\\\\052\\\\055\\\\055'"
+
+# IncrediMail, whatever the hell that is, sends out its text alternative as
+# DOS formatted text. Clean things up.
+message-hook "~h \"X-Mailer: IncrediMail" "set display_filter='tr -d \\\\r'"

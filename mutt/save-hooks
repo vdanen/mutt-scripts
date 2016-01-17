@@ -1,0 +1,8 @@
+# -*- muttrc -*-
+#
+# Configure where things get saved to.
+#
+# $Id: save-hooks 6 2007-03-02 17:36:39Z vdanen $
+
+save-hook batchftp@demon\.net               =batchftp
+save-hook .*                                =mbox
